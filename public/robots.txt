@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://magicerase.ai/sitemap.xml
+Sitemap: https://imageresizer.pro/sitemap.xml
