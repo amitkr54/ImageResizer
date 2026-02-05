@@ -76,12 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsArea = document.getElementById('results-area');
     const resultsGrid = document.getElementById('results-grid');
 
-    // Before/After Preview
-    const beforeAfterPreview = document.getElementById('before-after-preview');
-    const previewBefore = document.getElementById('preview-before');
-    const previewAfter = document.getElementById('preview-after');
-    const comparisonSlider = document.querySelector('.comparison-slider');
-    const comparisonClip = document.querySelector('.comparison-clip');
+    // Before/After Preview (Removed)
+    // const beforeAfterPreview = document.getElementById('before-after-preview');
 
     // --- State ---
     let currentTool = 'resize-pixel';
@@ -94,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cropper = null;
     let previousUnit = 'px';
     const multipliers = { px: 1, mm: 3.7795, cm: 37.795, in: 96 };
+    let previewTimeout;
 
     // --- Multi-Page Detection & UI Init ---
     function initMultiPage() {
@@ -118,23 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     initMultiPage();
 
-    // --- View Switching (For Dashboard SPA experience) ---
-    function showDashboard() {
+    // --- View Switching for Home Page ---
+    function showHome() {
         if (window.location.pathname.includes('/tools/')) {
             window.location.href = '../index.html';
             return;
         }
         if (dashboardView) dashboardView.classList.remove('hidden');
         if (editorView) editorView.classList.add('hidden');
-        if (viewTitle) viewTitle.textContent = "Dashboard";
+        if (viewTitle) viewTitle.textContent = "Home";
 
         document.title = "Image Resizer Pro - The Ultimate Image & PDF Suite";
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) metaDesc.setAttribute('content', "Professional browser-based suite for image resizing, compression, PDF merging, and official photo presets.");
-
         navItems.forEach(i => i.classList.remove('active'));
-        const dashBtn = document.querySelector('[data-view="dashboard"]');
-        if (dashBtn) dashBtn.classList.add('active');
         resetTool();
     }
 
@@ -324,10 +316,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.querySelector('.sidebar');
+
     if (menuToggle && sidebar) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('mobile-active');
         });
+    }
+
+    // --- Sidebar Accordion ---
+    const separators = document.querySelectorAll('.nav-separator');
+    separators.forEach(sep => {
+        sep.addEventListener('click', () => {
+            const groupId = sep.getAttribute('data-group');
+            const group = document.getElementById(`group-${groupId}`);
+            if (group) {
+                const isCollapsed = group.classList.toggle('collapsed');
+                sep.classList.toggle('collapsed');
+
+                // Switch transition style for smoother closing
+                group.classList.add('collapsing');
+                setTimeout(() => group.classList.remove('collapsing'), 400);
+            }
+        });
+    });
+
+    // Expand group containing active tool
+    const activeTool = document.querySelector('.nav-item.active');
+    if (activeTool) {
+        const group = activeTool.closest('.nav-group');
+        const sep = document.querySelector(`.nav-separator[data-group="${group?.id.replace('group-', '')}"]`);
+        if (group && sep) {
+            group.classList.remove('collapsed');
+            sep.classList.remove('collapsed');
+        }
     }
 
     // --- File Handling ---
@@ -443,7 +464,34 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderPreview(data) {
         const card = document.createElement('div');
         card.className = 'image-card';
-        card.innerHTML = `<img src="${data.img.src}"><div class="img-meta"><span>${data.originalWidth}x${data.originalHeight}</span><span>${(data.file.size / 1024).toFixed(1)} KB</span></div>`;
+        card.dataset.imageIndex = images.length - 1; // Track which image this is
+        card.innerHTML = `
+            <div class="image-card-comparison">
+                <div class="image-original-box">
+                    <h4>Original</h4>
+                    <div class="image-wrapper">
+                        <img src="${data.img.src}">
+                    </div>
+                    <div class="image-info">
+                        <span>${data.originalWidth}x${data.originalHeight}</span>
+                        <span>${(data.file.size / 1024).toFixed(1)} KB</span>
+                    </div>
+                </div>
+                <div class="image-processed-box">
+                    <h4>Processed</h4>
+                    <div class="image-wrapper image-placeholder">
+                        <i class="fas fa-spinner fa-pulse" style="font-size: 2rem; color: var(--text-secondary);"></i>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">Click Process to generate</p>
+                    </div>
+                    <div class="image-info">
+                        <span>-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="image-actions" style="display: none;">
+                <!-- Download button will be added here after processing -->
+            </div>
+        `;
         imageGrid.appendChild(card);
     }
 
@@ -602,7 +650,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Interaction Sync & Live Preview ---
-    let previewTimeout;
     function triggerLivePreview() {
         if (images.length === 0) return;
         clearTimeout(previewTimeout);
@@ -615,10 +662,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update results area without full loader for "live" feel
                 resultsArea.classList.remove('hidden');
                 resultsGrid.innerHTML = '';
-                addResultToGrid(result);
-                if (imgData.img) {
-                    showBeforeAfterPreview(imgData.img, result.url);
-                }
+                addResultToGrid(result, imgData); // Pass original data
+
+                // Use scrollIntoView to make it visible
+                // resultsArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         }, 300);
     }
@@ -661,61 +708,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Before/After Comparison Slider
-    if (comparisonSlider) {
-        comparisonSlider.addEventListener('mousedown', startDragging);
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('mouseup', stopDragging);
+    // Comparison Logic Removed
 
-        // Touch events
-        comparisonSlider.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            startDragging(e.touches[0]);
-        });
-        document.addEventListener('touchmove', (e) => {
-            if (isDraggingSlider) {
-                e.preventDefault();
-                drag(e.touches[0]);
-            }
-        });
-        document.addEventListener('touchend', stopDragging);
-    }
-
-    function startDragging(e) {
-        isDraggingSlider = true;
-    }
-
-    function drag(e) {
-        if (!isDraggingSlider || !comparisonSlider) return;
-
-        const container = comparisonSlider.closest('.comparison-wrapper');
-        if (!container) return;
-
-        const rect = container.getBoundingClientRect();
-        let x = e.clientX - rect.left;
-        x = Math.max(0, Math.min(x, rect.width));
-
-        const percentage = (x / rect.width) * 100;
-
-        if (comparisonSlider) comparisonSlider.style.left = percentage + '%';
-        if (comparisonClip) comparisonClip.style.left = percentage + '%';
-    }
-
-    function stopDragging() {
-        isDraggingSlider = false;
-    }
-
-    function showBeforeAfterPreview(originalImg, processedUrl, isPdf = false) {
-        if (!beforeAfterPreview || !previewBefore || !previewAfter) return;
-
-        previewBefore.src = isPdf ? (originalImg.src || originalImg) : originalImg.src;
-        previewAfter.src = processedUrl;
-        beforeAfterPreview.classList.remove('hidden');
-
-        // Reset slider to middle
-        if (comparisonSlider) comparisonSlider.style.left = '50%';
-        if (comparisonClip) comparisonClip.style.left = '50%';
-    }
 
     // Signature Canvas
     function initSignatureCanvas() {
@@ -833,21 +827,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         const result = await transformImage(imgData);
                         processedResults.push(result);
-                        addResultToGrid(result);
-
-                        // Show preview for first image
-                        if (processedCount === 1) {
-                            if (imgData.img) {
-                                showBeforeAfterPreview(imgData.img, result.url);
-                            } else if (imgData.previewUrl && result.previewUrl) {
-                                showBeforeAfterPreview({ src: imgData.previewUrl }, result.previewUrl, true);
-                            }
-                        }
+                        addResultToGrid(result, imgData);
                     }
                 }
-                resultsArea.classList.remove('hidden');
-                downloadAllBtn.classList.remove('hidden');
-                resultsArea.scrollIntoView({ behavior: 'smooth' });
+                // Results are now shown inline, no need for separate results section
+                // resultsArea.classList.remove('hidden');
+                // downloadAllBtn.classList.remove('hidden');
+                // resultsArea.scrollIntoView({ behavior: 'smooth' });
             } catch (err) { alert("Error: " + err.message); } finally { loader.classList.add('hidden'); }
         });
     }
@@ -890,15 +876,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 previewUrl
             };
             processedResults.push(result);
-            addResultToGrid(result);
-
-            // Show preview window for the first processed PDF
-            if (previewUrl && images.indexOf(data) === 0) {
-                const originalPreviewUrl = data.previewUrl;
-                if (originalPreviewUrl) {
-                    showBeforeAfterPreview({ src: originalPreviewUrl }, previewUrl, true);
-                }
-            }
+            addResultToGrid(result, data);
         }
     }
 
@@ -1231,41 +1209,64 @@ document.addEventListener('DOMContentLoaded', () => {
         addResultToGrid(result);
     }
 
-    function addResultToGrid(res) {
-        const card = document.createElement('div');
-        card.className = 'result-card';
+    function addResultToGrid(res, originalData = null) {
+        // Find the corresponding preview card
+        const cardIndex = originalData ? images.indexOf(originalData) : 0;
+        const previewCard = imageGrid.querySelector(`[data-image-index="${cardIndex}"]`);
+
+        if (!previewCard) {
+            console.error('Preview card not found for index:', cardIndex);
+            return;
+        }
 
         const currentSizeKB = (res.blob.size / 1024).toFixed(1);
-        let sizeInfoHtml = `<span>${currentSizeKB} KB</span>`;
+        let reductionHtml = '';
 
         if (res.originalSize) {
-            const originalSizeKB = res.originalSize / 1024;
-            const reduction = (((originalSizeKB - (res.blob.size / 1024)) / originalSizeKB) * 100).toFixed(0);
+            const originalSizeKB = (res.originalSize / 1024).toFixed(1);
+            const reduction = (((res.originalSize - res.blob.size) / res.originalSize) * 100).toFixed(0);
+
             if (reduction > 0) {
-                sizeInfoHtml = `
-                    <div style="display:flex; flex-direction:column; gap:2px;">
-                        <span style="color:var(--text-primary); font-weight:600;">Current: ${currentSizeKB} KB</span>
-                        <span style="color:var(--success); font-size:0.7rem;"><i class="fas fa-arrow-down"></i> Reduced by ${reduction}%</span>
-                    </div>
-                `;
+                reductionHtml = `<span style="color: var(--success); font-size: 0.75rem;"><i class="fas fa-arrow-down"></i> ${reduction}%</span>`;
             } else if (reduction < 0) {
-                sizeInfoHtml = `
-                    <div style="display:flex; flex-direction:column; gap:2px;">
-                        <span style="color:var(--text-primary); font-weight:600;">Current: ${currentSizeKB} KB</span>
-                        <span style="color:#ef4444; font-size:0.7rem;"><i class="fas fa-arrow-up"></i> Increased by ${Math.abs(reduction)}%</span>
-                    </div>
-                `;
+                reductionHtml = `<span style="color: #ef4444; font-size: 0.75rem;"><i class="fas fa-arrow-up"></i> ${Math.abs(reduction)}%</span>`;
             }
         }
 
-        card.innerHTML = `
-            ${(res.previewUrl || !res.name.endsWith('.pdf')) ?
-                `<img src="${res.previewUrl || res.url}">` :
-                '<div style="height:150px; display:flex; align-items:center; justify-content:center; background:#000; border-radius:10px;"><i class="fas fa-file-pdf" style="font-size:3rem; color:#ef4444;"></i></div>'}
-            <div class="img-meta">${sizeInfoHtml}</div>
-            <button class="btn-download-sm" onclick="downloadRes('${res.url}', '${res.name}')"><i class="fas fa-download"></i> Download</button>
-        `;
-        resultsGrid.appendChild(card);
+        // Update the processed column
+        const processedBox = previewCard.querySelector('.image-processed-box');
+        if (processedBox) {
+            const processedWrapper = processedBox.querySelector('.image-wrapper');
+            const processedInfo = processedBox.querySelector('.image-info');
+
+            // Update image
+            if (res.previewUrl || !res.name.endsWith('.pdf')) {
+                processedWrapper.innerHTML = `<img src="${res.previewUrl || res.url}">`;
+            } else {
+                processedWrapper.innerHTML = `<i class="fas fa-file-pdf" style="font-size: 3rem; color: #ef4444;"></i>`;
+            }
+            processedWrapper.classList.remove('image-placeholder');
+
+            // Update info
+            processedInfo.innerHTML = `
+                <span style="color: var(--primary); font-weight: 600;">${currentSizeKB} KB</span>
+                ${reductionHtml}
+            `;
+        }
+
+        // Add download button
+        const actionsDiv = previewCard.querySelector('.image-actions');
+        if (actionsDiv) {
+            actionsDiv.style.display = 'flex';
+            actionsDiv.innerHTML = `
+                <button class="btn-download-inline" onclick="downloadRes('${res.url}', '${res.name}')">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            `;
+        }
+
+        // Store result for download all
+        processedResults.push(res);
     }
 
     window.downloadRes = (url, name) => {
@@ -1295,7 +1296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoHome) {
         logoHome.addEventListener('click', (e) => {
             e.preventDefault();
-            showDashboard();
+            showHome();
         });
     }
 
@@ -1319,4 +1320,36 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sidebar) sidebar.classList.remove('mobile-active');
         });
     });
+
+    // --- Scroll Indicator Logic ---
+    const navMenu = document.querySelector('.nav-menu');
+    const scrollHint = document.querySelector('.sidebar-footer');
+    const hintTrigger = document.getElementById('scroll-hint');
+
+    if (navMenu && scrollHint) {
+        const updateScrollHint = () => {
+            const isAtBottom = navMenu.scrollHeight - navMenu.scrollTop <= navMenu.clientHeight + 20;
+            if (isAtBottom) {
+                scrollHint.classList.add('hidden');
+            } else {
+                scrollHint.classList.remove('hidden');
+            }
+        };
+
+        navMenu.addEventListener('scroll', updateScrollHint);
+        window.addEventListener('resize', updateScrollHint);
+
+        // Initial check
+        setTimeout(updateScrollHint, 500);
+
+        if (hintTrigger) {
+            hintTrigger.addEventListener('click', () => {
+                navMenu.scrollBy({ top: 150, behavior: 'smooth' });
+            });
+        }
+
+        // Also update when categories expand/collapse
+        const observer = new MutationObserver(updateScrollHint);
+        observer.observe(navMenu, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style'] });
+    }
 });

@@ -28,7 +28,7 @@
 
                         <nav class="top-nav">
                                 <!-- Image Resizer -->
-                                <div class="nav-dropdown">
+                                <div class="top-nav-dropdown">
                                         <a href="tools/resize-pixel.html" class="top-nav-item"><i
                                                         class="fas fa-expand-arrows-alt"></i> Image Resizer <i
                                                         class="fas fa-chevron-down"
@@ -54,7 +54,7 @@
                                 </div>
 
                                 <!-- Compressor -->
-                                <div class="nav-dropdown">
+                                <div class="top-nav-dropdown">
                                         <a href="tools/compress-20kb.html" class="top-nav-item"><i
                                                         class="fas fa-compress"></i> Compressor <i
                                                         class="fas fa-chevron-down"
@@ -84,7 +84,7 @@
                                 </div>
 
                                 <!-- ID Photos -->
-                                <div class="nav-dropdown">
+                                <div class="top-nav-dropdown">
                                         <a href="tools/passport-photo.html" class="top-nav-item"><i
                                                         class="fas fa-id-card"></i> ID Photos <i
                                                         class="fas fa-chevron-down"
@@ -106,7 +106,7 @@
                                 </div>
 
                                 <!-- PDF Tools -->
-                                <div class="nav-dropdown">
+                                <div class="top-nav-dropdown">
                                         <a href="tools/merge-pdf.html" class="top-nav-item"><i
                                                         class="fas fa-file-pdf"></i> PDF Tools <i
                                                         class="fas fa-chevron-down"
@@ -116,13 +116,13 @@
                                                         PDF</a>
                                                 <a href="tools/compress-pdf.html"><i class="fas fa-file-contract"></i>
                                                         Compress PDF</a>
-                                                <a href="tools/image-to-pdf.html"><i class="fas fa-file-import"></i>
+                                                <a href="tools/convert-pdf.html"><i class="fas fa-file-import"></i>
                                                         Image to PDF</a>
                                         </div>
                                 </div>
 
                                 <!-- Social Media -->
-                                <div class="nav-dropdown">
+                                <div class="top-nav-dropdown">
                                         <a href="tools/instagram-no-crop.html" class="top-nav-item"><i
                                                         class="fab fa-instagram"></i> Social <i
                                                         class="fas fa-chevron-down"
@@ -150,95 +150,140 @@
                                 </div>
 
                                 <nav class="nav-menu">
-                                        <a href="index.html" class="nav-item active" data-view="dashboard">
-                                                <i class="fas fa-th-large"></i>
-                                                <span>Dashboard</span>
-                                        </a>
 
-                                        <div class="nav-separator">General Resizing</div>
-                                        <a href="tools/resize-pixel.html" class="nav-item" data-tool="resize-pixel"><i
-                                                        class="fas fa-vector-square"></i><span>Resize Image by
-                                                        Pixel</span></a>
-                                        <a href="tools/resize-cm.html" class="nav-item" data-tool="resize-cm"><i
-                                                        class="fas fa-ruler-combined"></i><span>Resize Image in
-                                                        Centimeters</span></a>
-                                        <a href="tools/resize-mm.html" class="nav-item" data-tool="resize-mm"><i
-                                                        class="fas fa-ruler"></i><span>Resize Image in
-                                                        Millimeters</span></a>
-                                        <a href="tools/resize-in.html" class="nav-item" data-tool="resize-in"><i
-                                                        class="fas fa-expand"></i><span>Resize Image in
-                                                        Inches</span></a>
+                                        <div class="nav-separator" data-group="resizing"><span>General Resizing</span><i
+                                                        class="fas fa-chevron-down toggle-icon"></i></div>
+                                        <div class="nav-group" id="group-resizing">
+                                                <a href="tools/resize-pixel.html" class="nav-item"
+                                                        data-tool="resize-pixel"><i
+                                                                class="fas fa-vector-square"></i><span>Resize Image by
+                                                                Pixel</span></a>
+                                                <a href="tools/resize-cm.html" class="nav-item" data-tool="resize-cm"><i
+                                                                class="fas fa-ruler-combined"></i><span>Resize Image in
+                                                                Centimeters</span></a>
+                                                <a href="tools/resize-mm.html" class="nav-item" data-tool="resize-mm"><i
+                                                                class="fas fa-ruler"></i><span>Resize Image in
+                                                                Millimeters</span></a>
+                                                <a href="tools/resize-in.html" class="nav-item" data-tool="resize-in"><i
+                                                                class="fas fa-expand"></i><span>Resize Image in
+                                                                Inches</span></a>
+                                        </div>
 
-                                        <div class="nav-separator">Image Compression</div>
-                                        <a href="tools/compress-custom.html" class="nav-item"
-                                                data-tool="compress-custom"><i
-                                                        class="fas fa-file-export"></i><span>Compress Image to Custom
-                                                        Size</span></a>
-                                        <a href="tools/compress-5kb.html" class="nav-item" data-tool="compress-5kb"><i
-                                                        class="fas fa-compress-arrows-alt"></i><span>Compress Image to
-                                                        5KB</span></a>
-                                        <a href="tools/compress-10kb.html" class="nav-item" data-tool="compress-10kb"><i
-                                                        class="fas fa-compress-arrows-alt"></i><span>Compress Image to
-                                                        10KB</span></a>
-                                        <a href="tools/compress-20kb.html" class="nav-item" data-tool="compress-20kb"><i
-                                                        class="fas fa-compress-arrows-alt"></i><span>Compress Image to
-                                                        20KB</span></a>
-                                        <a href="tools/compress-50kb.html" class="nav-item" data-tool="compress-50kb"><i
-                                                        class="fas fa-compress-arrows-alt"></i><span>Compress Image to
-                                                        50KB</span></a>
-                                        <a href="tools/compress-100kb.html" class="nav-item"
-                                                data-tool="compress-100kb"><i
-                                                        class="fas fa-compress-arrows-alt"></i><span>Compress Image to
-                                                        100KB</span></a>
+                                        <div class="nav-separator" data-group="compression"><span>Image
+                                                        Compression</span><i
+                                                        class="fas fa-chevron-down toggle-icon"></i></div>
+                                        <div class="nav-group" id="group-compression">
+                                                <a href="tools/compress-custom.html" class="nav-item"
+                                                        data-tool="compress-custom"><i
+                                                                class="fas fa-file-export"></i><span>Compress Image to
+                                                                Custom
+                                                                Size</span></a>
+                                                <a href="tools/compress-5kb.html" class="nav-item"
+                                                        data-tool="compress-5kb"><i
+                                                                class="fas fa-compress-arrows-alt"></i><span>Compress
+                                                                Image to
+                                                                5KB</span></a>
+                                                <a href="tools/compress-10kb.html" class="nav-item"
+                                                        data-tool="compress-10kb"><i
+                                                                class="fas fa-compress-arrows-alt"></i><span>Compress
+                                                                Image to
+                                                                10KB</span></a>
+                                                <a href="tools/compress-20kb.html" class="nav-item"
+                                                        data-tool="compress-20kb"><i
+                                                                class="fas fa-compress-arrows-alt"></i><span>Compress
+                                                                Image to
+                                                                20KB</span></a>
+                                                <a href="tools/compress-50kb.html" class="nav-item"
+                                                        data-tool="compress-50kb"><i
+                                                                class="fas fa-compress-arrows-alt"></i><span>Compress
+                                                                Image to
+                                                                50KB</span></a>
+                                                <a href="tools/compress-100kb.html" class="nav-item"
+                                                        data-tool="compress-100kb"><i
+                                                                class="fas fa-compress-arrows-alt"></i><span>Compress
+                                                                Image to
+                                                                100KB</span></a>
+                                        </div>
 
-                                        <div class="nav-separator">Official & ID Sizes</div>
-                                        <a href="tools/passport-photo.html" class="nav-item"
-                                                data-tool="passport-photo"><i class="fas fa-id-card"></i><span>Passport
-                                                        Photo Maker</span></a>
-                                        <a href="tools/id-2x2.html" class="nav-item" data-tool="id-2x2"><i
-                                                        class="fas fa-portrait"></i><span>2x2 Inch ID Photo</span></a>
-                                        <a href="tools/id-35x45.html" class="nav-item" data-tool="id-35x45"><i
-                                                        class="fas fa-portrait"></i><span>35x45 mm ID Photo</span></a>
-                                        <a href="tools/ssc-photo.html" class="nav-item" data-tool="ssc-photo"><i
-                                                        class="fas fa-file-invoice"></i><span>SSC Photo
-                                                        Resize</span></a>
-                                        <a href="tools/pan-card.html" class="nav-item" data-tool="pan-card"><i
-                                                        class="fas fa-address-card"></i><span>PAN Card Photo</span></a>
-                                        <a href="tools/upsc-photo.html" class="nav-item" data-tool="upsc-photo"><i
-                                                        class="fas fa-user-graduate"></i><span>UPSC Photo</span></a>
-                                        <a href="tools/a4-size.html" class="nav-item" data-tool="a4-size"><i
-                                                        class="fas fa-file"></i><span>A4 Size</span></a>
+                                        <div class="nav-separator" data-group="official"><span>Official & ID
+                                                        Sizes</span><i class="fas fa-chevron-down toggle-icon"></i>
+                                        </div>
+                                        <div class="nav-group" id="group-official">
+                                                <a href="tools/passport-photo.html" class="nav-item"
+                                                        data-tool="passport-photo"><i
+                                                                class="fas fa-id-card"></i><span>Passport
+                                                                Photo Maker</span></a>
+                                                <a href="tools/id-2x2.html" class="nav-item" data-tool="id-2x2"><i
+                                                                class="fas fa-portrait"></i><span>2x2 Inch ID
+                                                                Photo</span></a>
+                                                <a href="tools/id-35x45.html" class="nav-item" data-tool="id-35x45"><i
+                                                                class="fas fa-portrait"></i><span>35x45 mm ID
+                                                                Photo</span></a>
+                                                <a href="tools/ssc-photo.html" class="nav-item" data-tool="ssc-photo"><i
+                                                                class="fas fa-file-invoice"></i><span>SSC Photo
+                                                                Resize</span></a>
+                                                <a href="tools/pan-card.html" class="nav-item" data-tool="pan-card"><i
+                                                                class="fas fa-address-card"></i><span>PAN Card
+                                                                Photo</span></a>
+                                                <a href="tools/upsc-photo.html" class="nav-item"
+                                                        data-tool="upsc-photo"><i
+                                                                class="fas fa-user-graduate"></i><span>UPSC
+                                                                Photo</span></a>
+                                                <a href="tools/a4-size.html" class="nav-item" data-tool="a4-size"><i
+                                                                class="fas fa-file"></i><span>A4 Size</span></a>
+                                        </div>
 
-                                        <div class="nav-separator">Social Media</div>
-                                        <a href="tools/instagram-no-crop.html" class="nav-item"
-                                                data-tool="instagram-no-crop"><i
-                                                        class="fab fa-instagram"></i><span>Instagram (No
-                                                        Crop)</span></a>
-                                        <a href="tools/whatsapp-dp.html" class="nav-item" data-tool="whatsapp-dp"><i
-                                                        class="fab fa-whatsapp"></i><span>WhatsApp DP</span></a>
-                                        <a href="tools/youtube-banner.html" class="nav-item"
-                                                data-tool="youtube-banner"><i class="fab fa-youtube"></i><span>YouTube
-                                                        Banner</span></a>
+                                        <div class="nav-separator" data-group="social"><span>Social Media</span><i
+                                                        class="fas fa-chevron-down toggle-icon"></i></div>
+                                        <div class="nav-group" id="group-social">
+                                                <a href="tools/instagram-no-crop.html" class="nav-item"
+                                                        data-tool="instagram-no-crop"><i
+                                                                class="fab fa-instagram"></i><span>Instagram (No
+                                                                Crop)</span></a>
+                                                <a href="tools/whatsapp-dp.html" class="nav-item"
+                                                        data-tool="whatsapp-dp"><i
+                                                                class="fab fa-whatsapp"></i><span>WhatsApp DP</span></a>
+                                                <a href="tools/youtube-banner.html" class="nav-item"
+                                                        data-tool="youtube-banner"><i
+                                                                class="fab fa-youtube"></i><span>YouTube
+                                                                Banner</span></a>
+                                        </div>
 
-                                        <div class="nav-separator">Editing Tools</div>
-                                        <a href="tools/crop-image.html" class="nav-item" data-tool="crop-image"><i
-                                                        class="fas fa-crop-alt"></i><span>Crop Image</span></a>
-                                        <a href="tools/rotate-image.html" class="nav-item" data-tool="rotate-image"><i
-                                                        class="fas fa-redo"></i><span>Rotate Image</span></a>
-                                        <a href="tools/flip-image.html" class="nav-item" data-tool="flip-image"><i
-                                                        class="fas fa-arrows-alt-v"></i><span>Flip Image</span></a>
-                                        <a href="tools/convert-image.html" class="nav-item" data-tool="convert-image"><i
-                                                        class="fas fa-exchange-alt"></i><span>Convert Image</span></a>
+                                        <div class="nav-separator" data-group="editing"><span>Editing Tools</span><i
+                                                        class="fas fa-chevron-down toggle-icon"></i></div>
+                                        <div class="nav-group" id="group-editing">
+                                                <a href="tools/crop-image.html" class="nav-item"
+                                                        data-tool="crop-image"><i class="fas fa-crop-alt"></i><span>Crop
+                                                                Image</span></a>
+                                                <a href="tools/rotate-image.html" class="nav-item"
+                                                        data-tool="rotate-image"><i class="fas fa-redo"></i><span>Rotate
+                                                                Image</span></a>
+                                                <a href="tools/flip-image.html" class="nav-item"
+                                                        data-tool="flip-image"><i
+                                                                class="fas fa-arrows-alt-v"></i><span>Flip
+                                                                Image</span></a>
+                                                <a href="tools/convert-image.html" class="nav-item"
+                                                        data-tool="convert-image"><i
+                                                                class="fas fa-exchange-alt"></i><span>Convert
+                                                                Image</span></a>
+                                        </div>
 
-                                        <div class="nav-separator">PDF Utilities</div>
-                                        <a href="tools/merge-pdf.html" class="nav-item" data-tool="merge-pdf"><i
-                                                        class="fas fa-file-pdf"></i><span>Merge PDF's</span></a>
-                                        <a href="tools/image-to-pdf.html" class="nav-item" data-tool="convert-pdf"><i
-                                                        class="fas fa-file-import"></i><span>Image to PDF</span></a>
+                                        <div class="nav-separator" data-group="pdf"><span>PDF Utilities</span><i
+                                                        class="fas fa-chevron-down toggle-icon"></i></div>
+                                        <div class="nav-group" id="group-pdf">
+                                                <a href="tools/merge-pdf.html" class="nav-item" data-tool="merge-pdf"><i
+                                                                class="fas fa-file-pdf"></i><span>Merge PDF's</span></a>
+                                                <a href="tools/image-to-pdf.html" class="nav-item"
+                                                        data-tool="convert-pdf"><i
+                                                                class="fas fa-file-import"></i><span>Image to
+                                                                PDF</span></a>
+                                        </div>
                                 </nav>
                                 <div class="sidebar-footer">
-                                        <p>&copy; 2024 Image Resizer Pro</p>
-                                        <p>100% Secure & Private</p>
+                                        <div class="scroll-indicator" id="scroll-hint">
+                                                <span>More Tools</span>
+                                                <i class="fas fa-chevron-down"></i>
+                                        </div>
                                 </div>
                         </aside>
 
@@ -246,7 +291,7 @@
                         <main class="main-content">
 
                                 <section class="workspace">
-                                        <!-- Dashboard View -->
+                                        <!-- Dashboard / Home View -->
                                         <div id="dashboard-view" class="dashboard-grid active">
                                                 <div class="tool-section">
                                                         <h2 class="category-title">Most Used Tools</h2>
@@ -254,8 +299,7 @@
                                                                 <a href="tools/passport-photo.html" class="tool-card"
                                                                         data-tool="passport-photo"><i
                                                                                 class="fas fa-id-card"></i><span>Passport
-                                                                                Photo
-                                                                                Maker</span></a>
+                                                                                Photo Maker</span></a>
                                                                 <a href="tools/compress-custom.html" class="tool-card"
                                                                         data-tool="compress-custom"><i
                                                                                 class="fas fa-compress-arrows-alt"></i><span>Reduce
@@ -339,8 +383,7 @@
                                                         <div class="tool-cards">
                                                                 <a href="tools/instagram-no-crop.html" class="tool-card"
                                                                         data-tool="instagram-no-crop"><span>Instagram
-                                                                                (No
-                                                                                Crop)</span></a>
+                                                                                (No Crop)</span></a>
                                                                 <a href="tools/whatsapp-dp.html" class="tool-card"
                                                                         data-tool="whatsapp-dp"><span>WhatsApp
                                                                                 DP</span></a>
@@ -350,6 +393,9 @@
                                                         </div>
                                                 </div>
                                         </div>
+
+                                        <!-- Workspace View for tools -->
+                                        <div id="editor-view" class="editor-view hidden">
                                 </section>
                         </main>
                 </div>
@@ -366,7 +412,7 @@
                 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
                 <script>
-                        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https:/ax/libs/pdf.js/3.11.174/pdf.worker.min.js';
                 </script>
                 <script src="script.js"></script>
 </body>
