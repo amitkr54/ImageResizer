@@ -1372,4 +1372,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const observer = new MutationObserver(updateScrollHint);
         observer.observe(navMenu, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style'] });
     }
+
+    // --- FAQ Accordion Logic ---
+    document.addEventListener('click', (e) => {
+        const question = e.target.closest('.faq-question');
+        if (question) {
+            const item = question.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all other FAQs in the same list
+            const list = item.parentElement;
+            list.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    });
 });
