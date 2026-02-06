@@ -4,7 +4,7 @@ from datetime import datetime
 # Directories and files
 tools_dir = r'c:\Users\Admin\Desktop\Image Resizer\tools'
 output_file = r'c:\Users\Admin\Desktop\Image Resizer\sitemap.xml'
-base_url = 'https://imageresizer.pro'
+base_url = 'https://imageresizer.signageworks.in'
 
 # Priority and change frequency settings
 priorities = {
