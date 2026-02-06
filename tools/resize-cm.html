@@ -1,390 +1,439 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resize in CM Online - Free Tool - Image Resizer Pro</title>
-    <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
-    <link rel="icon" type="image/png" href="../public/favicon.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resize Image in CM Online Free - Centimeter Photo Resizer</title>
+<link href="../style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
+<link href="../public/favicon.png" rel="icon" type="image/png"/>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Resize images in centimeters for printing & documents. Free online tool with exact CM dimensions. Perfect for ID photos, passports & official forms. Try now!">
+    <meta name="keywords" content="resize image cm, resize photo centimeters, cm image resizer, resize in centimetres, photo size cm, resize picture centimeters">
+    <link rel="canonical" href="https://imageresizer.signageworks.in/tools/resize-cm.html">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Image Resizer Pro">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://imageresizer.signageworks.in/tools/resize-cm.html">
+    <meta property="og:title" content="Resize Image in CM Online Free - Centimeter Photo Resizer">
+    <meta property="og:description" content="Resize images in centimeters for printing & documents. Free online tool with exact CM dimensions. Perfect for ID photos, passports & official forms. Try now!">
+    <meta property="og:image" content="https://imageresizer.signageworks.in/public/og-image.png">
+    <meta property="og:site_name" content="Image Resizer Pro">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://imageresizer.signageworks.in/tools/resize-cm.html">
+    <meta name="twitter:title" content="Resize Image in CM Online Free - Centimeter Photo Resizer">
+    <meta name="twitter:description" content="Resize images in centimeters for printing & documents. Free online tool with exact CM dimensions. Perfect for ID photos, passports & official forms. Try now!">
+    <meta name="twitter:image" content="https://imageresizer.signageworks.in/public/twitter-card.png">
+    
+    <!-- Additional Meta -->
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Resize Image in Centimeters (CM) - Free Tool",
+      "url": "https://imageresizer.signageworks.in/tools/resize-cm.html",
+      "description": "Resize images using centimeter measurements. Ideal for printing and official document requirements.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web Browser",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Image Resizer Pro",
+        "url": "https://imageresizer.signageworks.in"
+      },
+      "dateModified": "2026-02-07",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true
+    }
+    </script>\n    &lt;!-- SEO Tags --&gt;\n 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     </script>
 </head>
 <body data-tool="resize-cm" data-tool-title="Resize in CM">
-    <div class="app-container">
-        <header class="top-bar">
-            <div class="top-left">
-                <button id="menu-toggle" class="btn-icon-top"><i class="fas fa-bars"></i></button>
-                <div class="logo" onclick="window.location.href='../index.html'">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                    <span>Image Resizer Pro</span>
-                </div>
-            </div>
-
-            <nav class="top-nav">
-                <div class="top-nav-dropdown">
-                    <a href="resize-pixel.html" class="top-nav-item">
-                        <i class="fas fa-expand-arrows-alt"></i> Image Resizer <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="resize-pixel.html">Resize by Pixel</a>
-                        <a href="resize-cm.html">Resize in Centimeters</a>
-                        <a href="resize-mm.html">Resize in Millimeters</a>
-                        <a href="resize-in.html">Resize in Inches</a>
-                    </div>
-                </div>
-                <div class="top-nav-dropdown">
-                    <a href="compress-20kb.html" class="top-nav-item">
-                        <i class="fas fa-compress"></i> Compressor <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="resize-kb.html">Reduce Image Size (KB)</a>
-                        <a href="compress-5kb.html">Compress to 5KB</a>
-                        <a href="compress-10kb.html">Compress to 10KB</a>
-                        <a href="compress-20kb.html">Compress to 20KB</a>
-                        <a href="compress-50kb.html">Compress to 50KB</a>
-                        <a href="compress-100kb.html">Compress to 100KB</a>
-                        <a href="compress-500kb.html">Compress to 500KB</a>
-                    </div>
-                </div>
-                <div class="top-nav-dropdown">
-                    <a href="passport-photo.html" class="top-nav-item">
-                        <i class="fas fa-id-card"></i> ID Photos <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="passport-photo.html">Passport Photo</a>
-                        <a href="id-2x2.html">2 x 2 Inch</a>
-                        <a href="id-35x45.html">35mm x 45mm</a>
-                        <a href="id-3x4.html">3 x 4 cm</a>
-                        <a href="id-4x6.html">4 x 6 cm</a>
-                        <a href="ssc-photo.html">SSC Photo</a>
-                        <a href="pan-card.html">PAN Card</a>
-                        <a href="upsc-photo.html">UPSC Photo</a>
-                        <a href="a4-size.html">A4 Size</a>
-                    </div>
-                </div>
-                <div class="top-nav-dropdown">
-                    <a href="merge-pdf.html" class="top-nav-item">
-                        <i class="fas fa-file-pdf"></i> PDF Tools <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="merge-pdf.html">Merge PDF</a>
-                        <a href="image-to-pdf.html">Image to PDF</a>
-                        <a href="compress-pdf.html">Compress PDF</a>
-                    </div>
-                </div>
-                <div class="top-nav-dropdown">
-                    <a href="instagram-no-crop.html" class="top-nav-item">
-                        <i class="fab fa-instagram"></i> Social Media <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="instagram-no-crop.html">Instagram (No Crop)</a>
-                        <a href="whatsapp-dp.html">WhatsApp DP</a>
-                        <a href="youtube-banner.html">YouTube Banner</a>
-                    </div>
-                </div>
-            </nav>
-
-            <div class="top-actions">
-                <!-- Removed Browser-Based Processing badge -->
-            </div>
-        </header>
-
-        <div class="app-body">
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                
-                <div class="sidebar-header">
-                    <div class="search-wrapper">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="tool-search" placeholder="Search tools...">
-                    </div>
-                </div>
-
-                <nav class="nav-menu">
-                    <div class="nav-separator" data-group="resizing"><span>General Resizing</span><i class="fas fa-chevron-down toggle-icon"></i></div>
-                    <div class="nav-group" id="group-resizing">
-                        <a href="resize-pixel.html" class="nav-item" data-tool="resize-pixel"><i class="fas fa-vector-square"></i><span>Resize by Pixel</span></a>
-                        <a href="resize-cm.html" class="nav-item" data-tool="resize-cm"><i class="fas fa-ruler-combined"></i><span>Resize in Centimeters</span></a>
-                        <a href="resize-mm.html" class="nav-item" data-tool="resize-mm"><i class="fas fa-ruler"></i><span>Resize in Millimeters</span></a>
-                        <a href="resize-in.html" class="nav-item" data-tool="resize-in"><i class="fas fa-expand"></i><span>Resize in Inches</span></a>
-                    </div>
-
-                    <div class="nav-separator" data-group="compression"><span>Image Compression</span><i class="fas fa-chevron-down toggle-icon"></i></div>
-                    <div class="nav-group" id="group-compression">
-                        <a href="compress-custom.html" class="nav-item" data-tool="compress-custom"><i class="fas fa-file-export"></i><span>Compress Image to Custom Size</span></a>
-                        <a href="compress-5kb.html" class="nav-item" data-tool="compress-5kb"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 5KB</span></a>
-                        <a href="compress-10kb.html" class="nav-item" data-tool="compress-10kb"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 10KB</span></a>
-                        <a href="compress-20kb.html" class="nav-item" data-tool="compress-20kb"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 20KB</span></a>
-                        <a href="compress-50kb.html" class="nav-item" data-tool="compress-50kb"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 50KB</span></a>
-                        <a href="compress-100kb.html" class="nav-item" data-tool="compress-100kb"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 100KB</span></a>
-                    </div>
-
-                    <div class="nav-separator" data-group="official"><span>Official & ID Sizes</span><i class="fas fa-chevron-down toggle-icon"></i></div>
-                    <div class="nav-group" id="group-official">
-                        <a href="passport-photo.html" class="nav-item" data-tool="passport-photo"><i class="fas fa-id-card"></i><span>Passport Photo Maker</span></a>
-                        <a href="id-2x2.html" class="nav-item" data-tool="id-2x2"><i class="fas fa-portrait"></i><span>2x2 Inch ID Photo</span></a>
-                        <a href="id-35x45.html" class="nav-item" data-tool="id-35x45"><i class="fas fa-portrait"></i><span>35x45 mm ID Photo</span></a>
-                        <a href="ssc-photo.html" class="nav-item" data-tool="ssc-photo"><i class="fas fa-file-invoice"></i><span>SSC Photo Resize</span></a>
-                        <a href="pan-card.html" class="nav-item" data-tool="pan-card"><i class="fas fa-address-card"></i><span>PAN Card Photo</span></a>
-                        <a href="upsc-photo.html" class="nav-item" data-tool="upsc-photo"><i class="fas fa-user-graduate"></i><span>UPSC Photo</span></a>
-                        <a href="a4-size.html" class="nav-item" data-tool="a4-size"><i class="fas fa-file"></i><span>A4 Size</span></a>
-                    </div>
-
-                    <div class="nav-separator" data-group="social"><span>Social Media</span><i class="fas fa-chevron-down toggle-icon"></i></div>
-                    <div class="nav-group" id="group-social">
-                        <a href="instagram-no-crop.html" class="nav-item" data-tool="instagram-no-crop"><i class="fab fa-instagram"></i><span>Instagram (No Crop)</span></a>
-                        <a href="whatsapp-dp.html" class="nav-item" data-tool="whatsapp-dp"><i class="fab fa-whatsapp"></i><span>WhatsApp DP</span></a>
-                        <a href="youtube-banner.html" class="nav-item" data-tool="youtube-banner"><i class="fab fa-youtube"></i><span>YouTube Banner</span></a>
-                    </div>
-
-                    <div class="nav-separator" data-group="editing"><span>Editing Tools</span><i class="fas fa-chevron-down toggle-icon"></i></div>
-                    <div class="nav-group" id="group-editing">
-                        <a href="crop-image.html" class="nav-item" data-tool="crop-image"><i class="fas fa-crop-alt"></i><span>Crop Image</span></a>
-                        <a href="rotate-image.html" class="nav-item" data-tool="rotate-image"><i class="fas fa-redo"></i><span>Rotate Image</span></a>
-                        <a href="flip-image.html" class="nav-item" data-tool="flip-image"><i class="fas fa-arrows-alt-v"></i><span>Flip Image</span></a>
-                        <a href="convert-image.html" class="nav-item" data-tool="convert-image"><i class="fas fa-exchange-alt"></i><span>Convert Image</span></a>
-                    </div>
-
-                    <div class="nav-separator" data-group="pdf"><span>PDF Utilities</span><i class="fas fa-chevron-down toggle-icon"></i></div>
-                    <div class="nav-group" id="group-pdf">
-                        <a href="merge-pdf.html" class="nav-item" data-tool="merge-pdf"><i class="fas fa-file-pdf"></i><span>Merge PDF's</span></a>
-                        <a href="image-to-pdf.html" class="nav-item" data-tool="convert-pdf"><i class="fas fa-file-import"></i><span>Image to PDF</span></a>
-                    </div>
-                </nav>
-
-                <div class="sidebar-footer">
-                    <div class="scroll-indicator" id="scroll-hint">
-                        <span>More Tools</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-            </aside>
-
-            <!-- Main Content -->
-            <main class="main-content">
-                <section class="workspace">
-                    <div id="editor-view" class="editor-view">
-                        <input type="file" id="file-input" multiple accept="image/*,application/pdf" hidden>
-                        <div id="upload-zone" class="upload-zone">
-                            <div class="upload-content">
-                                <div class="upload-icon-pulse"><i class="fas fa-cloud-upload-alt"></i></div>
-                                <h3>Upload Files for Resize in CM</h3>
-                                <p>Drag images or PDF here to start processing</p>
-                                <span class="limit-hint">Multiple files supported</span>
-                            </div>
-                        </div>
-
-                        <div id="workspace-layout" class="workspace-layout hidden">
-                            <div class="preview-area">
-                                <div id="image-grid" class="image-grid"></div>
-                                
-                                
-                                <!-- Before/After Preview Removed -->
-
-                            </div>
-
-                            <div class="controls-area">
-                                <div class="glass-card">
-                                    <div id="pixel-controls" class="control-section hidden">
-                                        <h3 class="section-label">Dimensions</h3>
-                                        <div class="input-grid">
-                                            <div class="input-block">
-                                                <label>Width</label>
-                                                <div class="input-wrapper"><input type="number" id="width-input"></div>
-                                            </div>
-                                            <div class="input-block">
-                                                <label>Height</label>
-                                                <div class="input-wrapper"><input type="number" id="height-input"></div>
-                                            </div>
-                                        </div>
-                                        <div class="input-block mt-1">
-                                            <label>Unit</label>
-                                            <select id="unit-select">
-                                                <option value="px">Pixels</option>
-                                                <option value="mm">Millimeters</option>
-                                                <option value="cm">Centimeters</option>
-                                                <option value="in">Inches</option>
-                                            </select>
-                                        </div>
-                                        <div class="toggle-row">
-                                            <input type="checkbox" id="lock-aspect" checked>
-                                            <label for="lock-aspect">Lock Aspect Ratio</label>
-                                        </div>
-                                    </div>
-
-                                    <div id="kb-controls" class="control-section hidden">
-                                        <h3 class="section-label">Target Size</h3>
-                                        <div class="input-block">
-                                            <label>Target KB</label>
-                                            <div class="input-wrapper"><input type="number" id="target-kb" value="100"></div>
-                                        </div>
-                                        <div class="input-block mt-1">
-                                            <label>Compression Level (Quality)</label>
-                                            <input type="range" id="quality-range" min="5" max="95" value="80" style="width:100%;">
-                                            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-secondary);">
-                                                <span>Smaller</span>
-                                                <span id="quality-val">80%</span>
-                                                <span>Better</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Tool Specific Controls -->
-                                    <div id="passport-controls" class="control-section hidden">
-                                        <h3 class="section-label">Passport Preset</h3>
-                                        <div class="input-block">
-                                            <select id="passport-preset">
-                                                <option value="custom">Custom Dimensions</option>
-                                                <option value="2x2inch">2 x 2 Inch (US, India)</option>
-                                                <option value="35x45mm">35 x 45 mm (UK, EU)</option>
-                                                <option value="3.5x4.5cm">3.5 x 4.5 cm</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div id="flip-controls" class="control-section hidden">
-                                        <h3 class="section-label">Flip Image</h3>
-                                        <div class="btn-group-row">
-                                            <button id="btn-flip-h" class="btn-outline"><i class="fas fa-arrows-alt-h"></i> Horizontal</button>
-                                            <button id="btn-flip-v" class="btn-outline"><i class="fas fa-arrows-alt-v"></i> Vertical</button>
-                                        </div>
-                                        <input type="hidden" id="flip-h-val" value="1">
-                                        <input type="hidden" id="flip-v-val" value="1">
-                                    </div>
-
-                                    <div id="crop-controls" class="control-section hidden">
-                                        <h3 class="section-label">Crop Aspect Ratio</h3>
-                                        <div class="btn-group-grid">
-                                            <button class="btn-outline active" data-aspect-ratio="NaN">Free</button>
-                                            <button class="btn-outline" data-aspect-ratio="1">1:1</button>
-                                            <button class="btn-outline" data-aspect-ratio="1.3333333333">4:3</button>
-                                            <button class="btn-outline" data-aspect-ratio="1.7777777778">16:9</button>
-                                            <button class="btn-outline" data-aspect-ratio="0.6666666667">2:3</button>
-                                        </div>
-                                    </div>
-
-                                    <div id="rotate-controls" class="control-section hidden">
-                                        <h3 class="section-label">Rotate Image</h3>
-                                        <div class="btn-group-row">
-                                            <button id="btn-rotate-left" class="btn-outline"><i class="fas fa-undo"></i> -90°</button>
-                                            <button id="btn-rotate-right" class="btn-outline"><i class="fas fa-redo"></i> +90°</button>
-                                        </div>
-                                        <input type="hidden" id="rotate-val" value="0">
-                                    </div>
-
-                                    <div id="watermark-controls" class="control-section hidden">
-                                        <h3 class="section-label">Watermark Settings</h3>
-                                        <div class="input-block">
-                                            <label>Watermark Text</label>
-                                            <div class="input-wrapper"><input type="text" id="watermark-text" placeholder="Your Brand"></div>
-                                        </div>
-                                        <div class="input-block mt-1">
-                                            <label>Position</label>
-                                            <select id="watermark-position">
-                                                <option value="center">Center</option>
-                                                <option value="bottom-right" selected>Bottom Right</option>
-                                                <option value="bottom-left">Bottom Left</option>
-                                                <option value="top-right">Top Right</option>
-                                                <option value="top-left">Top Left</option>
-                                            </select>
-                                        </div>
-                                        <div class="input-block mt-1">
-                                            <label>Opacity: <span id="opacity-value">50%</span></label>
-                                            <input type="range" id="watermark-opacity" min="10" max="100" value="50">
-                                        </div>
-                                        <div class="input-block mt-1">
-                                            <label>Font Size: <span id="fontsize-value">30px</span></label>
-                                            <input type="range" id="watermark-fontsize" min="10" max="150" value="30">
-                                        </div>
-                                        <div class="input-block mt-1">
-                                            <label>Text Color</label>
-                                            <div class="color-picker-wrapper">
-                                                <input type="color" id="watermark-color" value="#ffffff">
-                                                <span id="watermark-color-label">#FFFFFF</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="metadata-controls" class="control-section hidden">
-                                        <h3 class="section-label">Image Metadata</h3>
-                                        <div id="metadata-display" class="metadata-box">
-                                            <p class="placeholder-text">Upload an image to see metadata</p>
-                                        </div>
-                                    </div>
-
-                                    <div id="signature-controls" class="control-section hidden">
-                                        <h3 class="section-label">Signature Canvas</h3>
-                                        <div class="signature-wrapper">
-                                            <canvas id="signature-canvas" width="300" height="150"></canvas>
-                                        </div>
-                                        <div class="input-block mt-1">
-                                            <label>Pen Size: <span id="pensize-value">3px</span></label>
-                                            <input type="range" id="signature-pensize" min="1" max="10" value="3">
-                                        </div>
-                                        <div class="btn-group-row mt-1">
-                                            <button id="btn-clear-signature" class="btn-outline"><i class="fas fa-eraser"></i> Clear</button>
-                                            <button id="btn-download-signature" class="btn-success"><i class="fas fa-download"></i> Save</button>
-                                        </div>
-                                    </div>
-
-                                    <div id="instagram-bg-controls" class="control-section hidden">
-                                        <h3 class="section-label">Background Color</h3>
-                                        <div class="color-picker-wrapper">
-                                            <input type="color" id="instagram-bg-color" value="#ffffff">
-                                            <span id="bg-color-label">#FFFFFF</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="control-section" id="format-section">
-                                        <h3 class="section-label">Output Format</h3>
-                                        <div class="format-toggle">
-                                            <input type="radio" name="format" id="fmt-orig" value="original" checked>
-                                            <label for="fmt-orig">Original</label>
-                                            <input type="radio" name="format" id="fmt-jpg" value="image/jpeg">
-                                            <label for="fmt-jpg">JPG</label>
-                                            <input type="radio" name="format" id="fmt-png" value="image/png">
-                                            <label for="fmt-png">PNG</label>
-                                            <input type="radio" name="format" id="fmt-webp" value="image/webp">
-                                            <label for="fmt-webp">WebP</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="action-footer">
-                                        <button id="process-btn" class="btn-primary"><i class="fas fa-magic"></i> Start Processing</button>
-                                        <button id="reset-btn" class="btn-outline"><i class="fas fa-undo"></i> Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="results-area" class="results-area hidden">
-                        <div class="results-header">
-                            <h3>Processed Results</h3>
-                            <button id="download-all-btn" class="btn-success hidden"><i class="fas fa-download"></i> Download All</button>
-                        </div>
-                        <div id="results-grid" class="results-grid"></div>
-                    </div>
-                </section>
-            </main>
-        </div>
-    </div>
-
-    <!-- Modals -->
-    <div id="loader" class="loader-overlay hidden">
-        <div class="loader-box">
-            <div class="spinner"></div>
-            <p id="loader-text">Processing...</p>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-    <script src="../script.js"></script>
+<div class="app-container">
+<header class="top-bar">
+<div class="top-left">
+<button class="btn-icon-top" id="menu-toggle"><i class="fas fa-bars"></i></button>
+<div class="logo" onclick="window.location.href='../index.html'">
+<i class="fas fa-expand-arrows-alt"></i>
+<span>Image Resizer Pro</span>
+</div>
+</div>
+<nav class="top-nav">
+<div class="top-nav-dropdown">
+<a class="top-nav-item" href="resize-pixel.html">
+<i class="fas fa-expand-arrows-alt"></i> Image Resizer <i class="fas fa-chevron-down"></i>
+</a>
+<div class="dropdown-menu">
+<a href="resize-pixel.html">Resize by Pixel</a>
+<a href="resize-cm.html">Resize in Centimeters</a>
+<a href="resize-mm.html">Resize in Millimeters</a>
+<a href="resize-in.html">Resize in Inches</a>
+</div>
+</div>
+<div class="top-nav-dropdown">
+<a class="top-nav-item" href="compress-20kb.html">
+<i class="fas fa-compress"></i> Compressor <i class="fas fa-chevron-down"></i>
+</a>
+<div class="dropdown-menu">
+<a href="resize-kb.html">Reduce Image Size (KB)</a>
+<a href="compress-5kb.html">Compress to 5KB</a>
+<a href="compress-10kb.html">Compress to 10KB</a>
+<a href="compress-20kb.html">Compress to 20KB</a>
+<a href="compress-50kb.html">Compress to 50KB</a>
+<a href="compress-100kb.html">Compress to 100KB</a>
+<a href="compress-500kb.html">Compress to 500KB</a>
+</div>
+</div>
+<div class="top-nav-dropdown">
+<a class="top-nav-item" href="passport-photo.html">
+<i class="fas fa-id-card"></i> ID Photos <i class="fas fa-chevron-down"></i>
+</a>
+<div class="dropdown-menu">
+<a href="passport-photo.html">Passport Photo</a>
+<a href="id-2x2.html">2 x 2 Inch</a>
+<a href="id-35x45.html">35mm x 45mm</a>
+<a href="id-3x4.html">3 x 4 cm</a>
+<a href="id-4x6.html">4 x 6 cm</a>
+<a href="ssc-photo.html">SSC Photo</a>
+<a href="pan-card.html">PAN Card</a>
+<a href="upsc-photo.html">UPSC Photo</a>
+<a href="a4-size.html">A4 Size</a>
+</div>
+</div>
+<div class="top-nav-dropdown">
+<a class="top-nav-item" href="merge-pdf.html">
+<i class="fas fa-file-pdf"></i> PDF Tools <i class="fas fa-chevron-down"></i>
+</a>
+<div class="dropdown-menu">
+<a href="merge-pdf.html">Merge PDF</a>
+<a href="image-to-pdf.html">Image to PDF</a>
+<a href="compress-pdf.html">Compress PDF</a>
+</div>
+</div>
+<div class="top-nav-dropdown">
+<a class="top-nav-item" href="instagram-no-crop.html">
+<i class="fab fa-instagram"></i> Social Media <i class="fas fa-chevron-down"></i>
+</a>
+<div class="dropdown-menu">
+<a href="instagram-no-crop.html">Instagram (No Crop)</a>
+<a href="whatsapp-dp.html">WhatsApp DP</a>
+<a href="youtube-banner.html">YouTube Banner</a>
+</div>
+</div>
+</nav>
+<div class="top-actions">
+<!-- Removed Browser-Based Processing badge -->
+</div>
+</header>
+<div class="app-body">
+<!-- Sidebar -->
+<aside class="sidebar">
+<div class="sidebar-header">
+<div class="search-wrapper">
+<i class="fas fa-search"></i>
+<input id="tool-search" placeholder="Search tools..." type="text"/>
+</div>
+</div>
+<nav class="nav-menu">
+<div class="nav-separator" data-group="resizing"><span>General Resizing</span><i class="fas fa-chevron-down toggle-icon"></i></div>
+<div class="nav-group" id="group-resizing">
+<a class="nav-item" data-tool="resize-pixel" href="resize-pixel.html"><i class="fas fa-vector-square"></i><span>Resize by Pixel</span></a>
+<a class="nav-item" data-tool="resize-cm" href="resize-cm.html"><i class="fas fa-ruler-combined"></i><span>Resize in Centimeters</span></a>
+<a class="nav-item" data-tool="resize-mm" href="resize-mm.html"><i class="fas fa-ruler"></i><span>Resize in Millimeters</span></a>
+<a class="nav-item" data-tool="resize-in" href="resize-in.html"><i class="fas fa-expand"></i><span>Resize in Inches</span></a>
+</div>
+<div class="nav-separator" data-group="compression"><span>Image Compression</span><i class="fas fa-chevron-down toggle-icon"></i></div>
+<div class="nav-group" id="group-compression">
+<a class="nav-item" data-tool="compress-custom" href="compress-custom.html"><i class="fas fa-file-export"></i><span>Compress Image to Custom Size</span></a>
+<a class="nav-item" data-tool="compress-5kb" href="compress-5kb.html"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 5KB</span></a>
+<a class="nav-item" data-tool="compress-10kb" href="compress-10kb.html"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 10KB</span></a>
+<a class="nav-item" data-tool="compress-20kb" href="compress-20kb.html"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 20KB</span></a>
+<a class="nav-item" data-tool="compress-50kb" href="compress-50kb.html"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 50KB</span></a>
+<a class="nav-item" data-tool="compress-100kb" href="compress-100kb.html"><i class="fas fa-compress-arrows-alt"></i><span>Compress Image to 100KB</span></a>
+</div>
+<div class="nav-separator" data-group="official"><span>Official &amp; ID Sizes</span><i class="fas fa-chevron-down toggle-icon"></i></div>
+<div class="nav-group" id="group-official">
+<a class="nav-item" data-tool="passport-photo" href="passport-photo.html"><i class="fas fa-id-card"></i><span>Passport Photo Maker</span></a>
+<a class="nav-item" data-tool="id-2x2" href="id-2x2.html"><i class="fas fa-portrait"></i><span>2x2 Inch ID Photo</span></a>
+<a class="nav-item" data-tool="id-35x45" href="id-35x45.html"><i class="fas fa-portrait"></i><span>35x45 mm ID Photo</span></a>
+<a class="nav-item" data-tool="ssc-photo" href="ssc-photo.html"><i class="fas fa-file-invoice"></i><span>SSC Photo Resize</span></a>
+<a class="nav-item" data-tool="pan-card" href="pan-card.html"><i class="fas fa-address-card"></i><span>PAN Card Photo</span></a>
+<a class="nav-item" data-tool="upsc-photo" href="upsc-photo.html"><i class="fas fa-user-graduate"></i><span>UPSC Photo</span></a>
+<a class="nav-item" data-tool="a4-size" href="a4-size.html"><i class="fas fa-file"></i><span>A4 Size</span></a>
+</div>
+<div class="nav-separator" data-group="social"><span>Social Media</span><i class="fas fa-chevron-down toggle-icon"></i></div>
+<div class="nav-group" id="group-social">
+<a class="nav-item" data-tool="instagram-no-crop" href="instagram-no-crop.html"><i class="fab fa-instagram"></i><span>Instagram (No Crop)</span></a>
+<a class="nav-item" data-tool="whatsapp-dp" href="whatsapp-dp.html"><i class="fab fa-whatsapp"></i><span>WhatsApp DP</span></a>
+<a class="nav-item" data-tool="youtube-banner" href="youtube-banner.html"><i class="fab fa-youtube"></i><span>YouTube Banner</span></a>
+</div>
+<div class="nav-separator" data-group="editing"><span>Editing Tools</span><i class="fas fa-chevron-down toggle-icon"></i></div>
+<div class="nav-group" id="group-editing">
+<a class="nav-item" data-tool="crop-image" href="crop-image.html"><i class="fas fa-crop-alt"></i><span>Crop Image</span></a>
+<a class="nav-item" data-tool="rotate-image" href="rotate-image.html"><i class="fas fa-redo"></i><span>Rotate Image</span></a>
+<a class="nav-item" data-tool="flip-image" href="flip-image.html"><i class="fas fa-arrows-alt-v"></i><span>Flip Image</span></a>
+<a class="nav-item" data-tool="convert-image" href="convert-image.html"><i class="fas fa-exchange-alt"></i><span>Convert Image</span></a>
+</div>
+<div class="nav-separator" data-group="pdf"><span>PDF Utilities</span><i class="fas fa-chevron-down toggle-icon"></i></div>
+<div class="nav-group" id="group-pdf">
+<a class="nav-item" data-tool="merge-pdf" href="merge-pdf.html"><i class="fas fa-file-pdf"></i><span>Merge PDF's</span></a>
+<a class="nav-item" data-tool="convert-pdf" href="image-to-pdf.html"><i class="fas fa-file-import"></i><span>Image to PDF</span></a>
+</div>
+</nav>
+<div class="sidebar-footer">
+<div class="scroll-indicator" id="scroll-hint">
+<span>More Tools</span>
+<i class="fas fa-chevron-down"></i>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="main-content">
+<section class="workspace"><h1 style="display:none;">Resize Image in Centimeters (CM) - Free Tool</h1>
+<div class="editor-view" id="editor-view">
+<input accept="image/*,application/pdf" hidden="" id="file-input" multiple="" type="file"/>
+<div class="upload-zone" id="upload-zone">
+<div class="upload-content">
+<div class="upload-icon-pulse"><i class="fas fa-cloud-upload-alt"></i></div>
+<h3>Upload Files for Resize in CM</h3>
+<p>Drag images or PDF here to start processing</p>
+<span class="limit-hint">Multiple files supported</span>
+</div>
+</div>
+<div class="workspace-layout hidden" id="workspace-layout">
+<div class="preview-area">
+<div class="image-grid" id="image-grid"></div>
+<!-- Before/After Preview Removed -->
+</div>
+<div class="controls-area">
+<div class="glass-card">
+<div class="control-section hidden" id="pixel-controls">
+<h3 class="section-label">Dimensions</h3>
+<div class="input-grid">
+<div class="input-block">
+<label>Width</label>
+<div class="input-wrapper"><input id="width-input" type="number"/></div>
+</div>
+<div class="input-block">
+<label>Height</label>
+<div class="input-wrapper"><input id="height-input" type="number"/></div>
+</div>
+</div>
+<div class="input-block mt-1">
+<label>Unit</label>
+<select id="unit-select">
+<option value="px">Pixels</option>
+<option value="mm">Millimeters</option>
+<option value="cm">Centimeters</option>
+<option value="in">Inches</option>
+</select>
+</div>
+<div class="toggle-row">
+<input checked="" id="lock-aspect" type="checkbox"/>
+<label for="lock-aspect">Lock Aspect Ratio</label>
+</div>
+</div>
+<div class="control-section hidden" id="kb-controls">
+<h3 class="section-label">Target Size</h3>
+<div class="input-block">
+<label>Target KB</label>
+<div class="input-wrapper"><input id="target-kb" type="number" value="100"/></div>
+</div>
+<div class="input-block mt-1">
+<label>Compression Level (Quality)</label>
+<input id="quality-range" max="95" min="5" style="width:100%;" type="range" value="80"/>
+<div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-secondary);">
+<span>Smaller</span>
+<span id="quality-val">80%</span>
+<span>Better</span>
+</div>
+</div>
+</div>
+<!-- Tool Specific Controls -->
+<div class="control-section hidden" id="passport-controls">
+<h3 class="section-label">Passport Preset</h3>
+<div class="input-block">
+<select id="passport-preset">
+<option value="custom">Custom Dimensions</option>
+<option value="2x2inch">2 x 2 Inch (US, India)</option>
+<option value="35x45mm">35 x 45 mm (UK, EU)</option>
+<option value="3.5x4.5cm">3.5 x 4.5 cm</option>
+</select>
+</div>
+</div>
+<div class="control-section hidden" id="flip-controls">
+<h3 class="section-label">Flip Image</h3>
+<div class="btn-group-row">
+<button class="btn-outline" id="btn-flip-h"><i class="fas fa-arrows-alt-h"></i> Horizontal</button>
+<button class="btn-outline" id="btn-flip-v"><i class="fas fa-arrows-alt-v"></i> Vertical</button>
+</div>
+<input id="flip-h-val" type="hidden" value="1"/>
+<input id="flip-v-val" type="hidden" value="1"/>
+</div>
+<div class="control-section hidden" id="crop-controls">
+<h3 class="section-label">Crop Aspect Ratio</h3>
+<div class="btn-group-grid">
+<button class="btn-outline active" data-aspect-ratio="NaN">Free</button>
+<button class="btn-outline" data-aspect-ratio="1">1:1</button>
+<button class="btn-outline" data-aspect-ratio="1.3333333333">4:3</button>
+<button class="btn-outline" data-aspect-ratio="1.7777777778">16:9</button>
+<button class="btn-outline" data-aspect-ratio="0.6666666667">2:3</button>
+</div>
+</div>
+<div class="control-section hidden" id="rotate-controls">
+<h3 class="section-label">Rotate Image</h3>
+<div class="btn-group-row">
+<button class="btn-outline" id="btn-rotate-left"><i class="fas fa-undo"></i> -90°</button>
+<button class="btn-outline" id="btn-rotate-right"><i class="fas fa-redo"></i> +90°</button>
+</div>
+<input id="rotate-val" type="hidden" value="0"/>
+</div>
+<div class="control-section hidden" id="watermark-controls">
+<h3 class="section-label">Watermark Settings</h3>
+<div class="input-block">
+<label>Watermark Text</label>
+<div class="input-wrapper"><input id="watermark-text" placeholder="Your Brand" type="text"/></div>
+</div>
+<div class="input-block mt-1">
+<label>Position</label>
+<select id="watermark-position">
+<option value="center">Center</option>
+<option selected="" value="bottom-right">Bottom Right</option>
+<option value="bottom-left">Bottom Left</option>
+<option value="top-right">Top Right</option>
+<option value="top-left">Top Left</option>
+</select>
+</div>
+<div class="input-block mt-1">
+<label>Opacity: <span id="opacity-value">50%</span></label>
+<input id="watermark-opacity" max="100" min="10" type="range" value="50"/>
+</div>
+<div class="input-block mt-1">
+<label>Font Size: <span id="fontsize-value">30px</span></label>
+<input id="watermark-fontsize" max="150" min="10" type="range" value="30"/>
+</div>
+<div class="input-block mt-1">
+<label>Text Color</label>
+<div class="color-picker-wrapper">
+<input id="watermark-color" type="color" value="#ffffff"/>
+<span id="watermark-color-label">#FFFFFF</span>
+</div>
+</div>
+</div>
+<div class="control-section hidden" id="metadata-controls">
+<h3 class="section-label">Image Metadata</h3>
+<div class="metadata-box" id="metadata-display">
+<p class="placeholder-text">Upload an image to see metadata</p>
+</div>
+</div>
+<div class="control-section hidden" id="signature-controls">
+<h3 class="section-label">Signature Canvas</h3>
+<div class="signature-wrapper">
+<canvas height="150" id="signature-canvas" width="300"></canvas>
+</div>
+<div class="input-block mt-1">
+<label>Pen Size: <span id="pensize-value">3px</span></label>
+<input id="signature-pensize" max="10" min="1" type="range" value="3"/>
+</div>
+<div class="btn-group-row mt-1">
+<button class="btn-outline" id="btn-clear-signature"><i class="fas fa-eraser"></i> Clear</button>
+<button class="btn-success" id="btn-download-signature"><i class="fas fa-download"></i> Save</button>
+</div>
+</div>
+<div class="control-section hidden" id="instagram-bg-controls">
+<h3 class="section-label">Background Color</h3>
+<div class="color-picker-wrapper">
+<input id="instagram-bg-color" type="color" value="#ffffff"/>
+<span id="bg-color-label">#FFFFFF</span>
+</div>
+</div>
+<div class="control-section" id="format-section">
+<h3 class="section-label">Output Format</h3>
+<div class="format-toggle">
+<input checked="" id="fmt-orig" name="format" type="radio" value="original"/>
+<label for="fmt-orig">Original</label>
+<input id="fmt-jpg" name="format" type="radio" value="image/jpeg"/>
+<label for="fmt-jpg">JPG</label>
+<input id="fmt-png" name="format" type="radio" value="image/png"/>
+<label for="fmt-png">PNG</label>
+<input id="fmt-webp" name="format" type="radio" value="image/webp"/>
+<label for="fmt-webp">WebP</label>
+</div>
+</div>
+<div class="action-footer">
+<button class="btn-primary" id="process-btn"><i class="fas fa-magic"></i> Start Processing</button>
+<button class="btn-outline" id="reset-btn"><i class="fas fa-undo"></i> Reset</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="results-area hidden" id="results-area">
+<div class="results-header">
+<h3>Processed Results</h3>
+<button class="btn-success hidden" id="download-all-btn"><i class="fas fa-download"></i> Download All</button>
+</div>
+<div class="results-grid" id="results-grid"></div>
+</div>
+</section>
+</main>
+</div>
+</div>
+<!-- Modals -->
+<div class="loader-overlay hidden" id="loader">
+<div class="loader-box">
+<div class="spinner"></div>
+<p id="loader-text">Processing...</p>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<script src="../script.js"></script>
 </body>
 </html>
