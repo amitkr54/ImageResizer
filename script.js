@@ -202,6 +202,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (id === 'pan-card') { widthInput.value = 3.5; heightInput.value = 2.5; }
             if (id === 'upsc-photo') { widthInput.value = 3.5; heightInput.value = 4.5; }
             if (id === 'ssc-photo') { widthInput.value = 3.5; heightInput.value = 4.5; }
+            if (id === 'aadhar-merger') { widthInput.value = 8.5; heightInput.value = 5.5; unitSelect.value = 'cm'; }
+            if (id === 'gds-signature') {
+                if (widthInput) widthInput.value = 140;
+                if (heightInput) heightInput.value = 60;
+                if (targetKb) targetKb.value = 15;
+            }
+        } else if (id === 'linkedin-carousel') {
+            pixelControls.classList.remove('hidden');
+            if (unitSelect) {
+                unitSelect.value = 'px';
+                previousUnit = 'px';
+            }
+            if (widthInput) widthInput.value = 1080;
+            if (heightInput) heightInput.value = 1350;
+            if (lockAspect) lockAspect.checked = true;
+            // PDF output is forced for carousel in the processing logic usually, but here we just set dimensions
+        } else if (id === 'heic-to-jpg') {
+            pixelControls.classList.add('hidden');
+            const formatRadioJpg = document.getElementById('fmt-jpg');
+            if (formatRadioJpg) formatRadioJpg.checked = true;
         } else if (id === 'resize-mm' || id === 'a4-size') {
             pixelControls.classList.remove('hidden');
             if (unitSelect) {

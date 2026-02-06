@@ -43,40 +43,45 @@ assetsToCopy.forEach(asset => {
 });
 
 const tools = [
-    { id: 'resize-pixel', title: 'Resize Image by Pixel' },
-    { id: 'compress-20kb', title: 'Compress to 20KB' },
-    { id: 'pan-card', title: 'PAN Card Resize' },
-    { id: 'passport-photo', title: 'Passport Maker' },
-    { id: 'merge-pdf', title: 'Merge PDF' },
-    { id: 'upsc-photo', title: 'UPSC Photo' },
-    { id: 'instagram-no-crop', title: 'Instagram Resize' },
-    { id: 'image-to-pdf', title: 'Image to PDF' },
-    { id: 'whatsapp-dp', title: 'WhatsApp DP' },
-    { id: 'compress-10kb', title: 'Compress to 10KB' },
-    { id: 'compress-5kb', title: 'Compress to 5KB' },
-    { id: 'compress-50kb', title: 'Compress to 50KB' },
-    { id: 'compress-100kb', title: 'Compress to 100KB' },
-    { id: 'ssc-photo', title: 'SSC Photo Resize' },
-    { id: 'youtube-banner', title: 'YouTube Banner' },
-    { id: 'signature-maker', title: 'Signature Maker' },
-    { id: 'crop-image', title: 'Freehand Crop' },
-    { id: 'convert-image', title: 'Convert Image' },
-    { id: 'a4-size', title: 'A4 Size Reducer' },
-    { id: 'resize-cm', title: 'Resize in CM' },
-    { id: 'resize-mm', title: 'Resize in MM' },
-    { id: 'resize-in', title: 'Resize in Inches' },
-    { id: 'resize-kb', title: 'Reduce KB Size' },
-    { id: 'id-2x2', title: '2x2 Inch Photo' },
-    { id: 'id-35x45', title: '35x45 mm Photo' },
-    { id: 'rotate-image', title: 'Rotate Image' },
-    { id: 'flip-image', title: 'Flip Image' },
-    { id: 'watermark-image', title: 'Watermark Image' },
-    { id: 'metadata-viewer', title: 'Metadata Viewer' },
-    { id: 'id-3x4', title: '3x4 Inch Photo' },
-    { id: 'id-4x6', title: '4x6 Inch Photo' },
-    { id: 'compress-pdf', title: 'Compress PDF' },
-    { id: 'compress-500kb', title: 'Compress to 500KB' },
-    { id: 'compress-custom', title: 'Compress to Custom Size' }
+    { id: 'resize-pixel', title: 'Resize Image by Pixel', description: 'Resize your images to exact pixel dimensions for any project.' },
+    { id: 'compress-20kb', title: 'Compress to 20KB', description: 'Quickly compress images to under 20KB for online forms and fast web use.' },
+    { id: 'pan-card', title: 'PAN Card Resize', description: 'Perfectly resize your photo to 3.5 x 2.5 cm for PAN card applications.' },
+    { id: 'passport-photo', title: 'Passport Photo Maker', description: 'Generate passport-size photos with one click for various international requirements.' },
+    { id: 'merge-pdf', title: 'Merge PDF', description: 'Combine multiple PDF files into one single document easily.' },
+    { id: 'upsc-photo', title: 'UPSC Photo & Signature Resizer', description: 'Resize shots and signatures specifically for UPSC online portal requirements.' },
+    { id: 'instagram-no-crop', title: 'Instagram Resize (No Crop)', description: 'Resize photos for Instagram without losing any part of the image.' },
+    { id: 'image-to-pdf', title: 'Image to PDF', description: 'Convert your JPG/PNG images into high-quality PDF documents.' },
+    { id: 'whatsapp-dp', title: 'WhatsApp DP Resizer', description: 'Resize your profile picture for WhatsApp without awkward cropping.' },
+    { id: 'compress-10kb', title: 'Compress to 10KB', description: 'Reduce image file size to exactly under 10KB.' },
+    { id: 'compress-5kb', title: 'Compress to 5KB', description: 'Compress images to extremely small sizes under 5KB.' },
+    { id: 'compress-50kb', title: 'Compress to 50KB', description: 'Resize and compress images to under 50KB.' },
+    { id: 'compress-100kb', title: 'Compress to 100KB', description: 'Optimize and compress images to under 100KB.' },
+    { id: 'ssc-photo', title: 'SSC Photo Resize', description: 'Standard resizing for SSC exam application photos.' },
+    { id: 'youtube-banner', title: 'YouTube Banner Resizer', description: 'Resize your channel art to 2560x1440 pixels for YouTube.' },
+    { id: 'signature-maker', title: 'Digital Signature Maker', description: 'Draw and download your digital signature for online signing.' },
+    { id: 'crop-image', title: 'Freehand Image Cropper', description: 'Crop your images to any ratio or size with a live preview.' },
+    { id: 'convert-image', title: 'Image Format Converter', description: 'Convert between JPG, PNG, WebP, and more.' },
+    { id: 'a4-size', title: 'A4 Size Reducer', description: 'Scale your images or scans to standard A4 page dimensions.' },
+    { id: 'resize-cm', title: 'Resize in CM', description: 'Convert and resize images using Centimeter measurements.' },
+    { id: 'resize-mm', title: 'Resize in MM', description: 'Convert and resize images using Millimeter measurements.' },
+    { id: 'resize-in', title: 'Resize in Inches', description: 'Convert and resize images using Inch measurements.' },
+    { id: 'resize-kb', title: 'Reduce KB Size', description: 'Target a specific kilobyte (KB) size for your image files.' },
+    { id: 'id-2x2', title: '2x2 Inch Photo', description: 'Create standard 2x2 inch ID photos for visas and licenses.' },
+    { id: 'id-35x45', title: '35x45 mm Photo', description: 'Generate 35x45 mm ID photos common in Europe and Asia.' },
+    { id: 'rotate-image', title: 'Rotate Image Online', description: 'Rotate your photos 90 or 180 degrees instantly.' },
+    { id: 'flip-image', title: 'Flip Image Online', description: 'Mirror or flip your images horizontally or vertically.' },
+    { id: 'watermark-image', title: 'Watermark Image', description: 'Protect your photos by adding text or image watermarks.' },
+    { id: 'metadata-viewer', title: 'Image Metadata Viewer', description: 'View and strip EXIF data from your photos for privacy.' },
+    { id: 'id-3x4', title: '3x4 cm Photo', description: 'Create 3x4 cm ID photos for official documents.' },
+    { id: 'id-4x6', title: '4x6 cm Photo', description: 'Create 4x6 cm ID photos for official documents.' },
+    { id: 'compress-pdf', title: 'Compress PDF', description: 'Reduce the file size of your PDF documents.' },
+    { id: 'compress-500kb', title: 'Compress to 500KB', description: 'Compress files to stay under 500KB.' },
+    { id: 'compress-custom', title: 'Compress to Custom Size', description: 'Input your own KB target and we will compress it.' },
+    { id: 'gds-signature', title: 'India Post GDS Signature Resizer', description: 'The official GDS signature resizer - convert your signature to 140x60px and under 20KB.' },
+    { id: 'linkedin-carousel', title: 'LinkedIn PDF Carousel Maker', description: 'Convert your images into high-quality LinkedIn PDF carousels.' },
+    { id: 'aadhar-merger', title: 'Aadhar Card Front-Back Merger', description: 'Merge both sides of your Aadhar card or ID into one single image.' },
+    { id: 'heic-to-jpg', title: 'HEIC to JPG Converter', description: 'Convert iPhone HEIC photos to JPG format instantly.' },
+    { id: 'blur-privacy', title: 'Privacy Blur & Censor Tool', description: 'Blur faces or hide sensitive information from your photos.' }
 ];
 
 const sidebarItemsHTML = `
@@ -114,12 +119,15 @@ const sidebarItemsHTML = `
                         <a href="ssc-photo.html" class="nav-item" data-tool="ssc-photo"><i class="fas fa-file-invoice"></i><span>SSC Photo Resize</span></a>
                         <a href="pan-card.html" class="nav-item" data-tool="pan-card"><i class="fas fa-address-card"></i><span>PAN Card Photo</span></a>
                         <a href="upsc-photo.html" class="nav-item" data-tool="upsc-photo"><i class="fas fa-user-graduate"></i><span>UPSC Photo</span></a>
+                        <a href="gds-signature.html" class="nav-item" data-tool="gds-signature"><i class="fas fa-signature"></i><span>GDS Signature Resize</span></a>
+                        <a href="aadhar-merger.html" class="nav-item" data-tool="aadhar-merger"><i class="fas fa-columns"></i><span>Aadhar Card Merger</span></a>
                         <a href="a4-size.html" class="nav-item" data-tool="a4-size"><i class="fas fa-file"></i><span>A4 Size</span></a>
                     </div>
 
                     <div class="nav-separator" data-group="social"><span>Social Media</span><i class="fas fa-chevron-down toggle-icon"></i></div>
                     <div class="nav-group" id="group-social">
                         <a href="instagram-no-crop.html" class="nav-item" data-tool="instagram-no-crop"><i class="fab fa-instagram"></i><span>Instagram (No Crop)</span></a>
+                        <a href="linkedin-carousel.html" class="nav-item" data-tool="linkedin-carousel"><i class="fab fa-linkedin"></i><span>LinkedIn Carousel</span></a>
                         <a href="whatsapp-dp.html" class="nav-item" data-tool="whatsapp-dp"><i class="fab fa-whatsapp"></i><span>WhatsApp DP</span></a>
                         <a href="youtube-banner.html" class="nav-item" data-tool="youtube-banner"><i class="fab fa-youtube"></i><span>YouTube Banner</span></a>
                     </div>
@@ -127,9 +135,11 @@ const sidebarItemsHTML = `
                     <div class="nav-separator" data-group="editing"><span>Editing Tools</span><i class="fas fa-chevron-down toggle-icon"></i></div>
                     <div class="nav-group" id="group-editing">
                         <a href="crop-image.html" class="nav-item" data-tool="crop-image"><i class="fas fa-crop-alt"></i><span>Crop Image</span></a>
+                        <a href="blur-privacy.html" class="nav-item" data-tool="blur-privacy"><i class="fas fa-user-shield"></i><span>Privacy Blur</span></a>
                         <a href="rotate-image.html" class="nav-item" data-tool="rotate-image"><i class="fas fa-redo"></i><span>Rotate Image</span></a>
                         <a href="flip-image.html" class="nav-item" data-tool="flip-image"><i class="fas fa-arrows-alt-v"></i><span>Flip Image</span></a>
                         <a href="convert-image.html" class="nav-item" data-tool="convert-image"><i class="fas fa-exchange-alt"></i><span>Convert Image</span></a>
+                        <a href="heic-to-jpg.html" class="nav-item" data-tool="heic-to-jpg"><i class="fas fa-file-image"></i><span>HEIC to JPG</span></a>
                     </div>
 
                     <div class="nav-separator" data-group="pdf"><span>PDF Utilities</span><i class="fas fa-chevron-down toggle-icon"></i></div>
@@ -141,12 +151,14 @@ const sidebarItemsHTML = `
 `;
 
 function generateHTML(tool) {
+    const metaDesc = tool.description || "The ultimate tool for resizing and compressing images and PDFs online.";
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${tool.title} Online - Free Tool - Image Resizer Pro</title>
+    <meta name="description" content="${metaDesc}">
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -202,11 +214,11 @@ function generateHTML(tool) {
                         <a href="passport-photo.html">Passport Photo</a>
                         <a href="id-2x2.html">2 x 2 Inch</a>
                         <a href="id-35x45.html">35mm x 45mm</a>
-                        <a href="id-3x4.html">3 x 4 cm</a>
-                        <a href="id-4x6.html">4 x 6 cm</a>
                         <a href="ssc-photo.html">SSC Photo</a>
                         <a href="pan-card.html">PAN Card</a>
                         <a href="upsc-photo.html">UPSC Photo</a>
+                        <a href="gds-signature.html">GDS Signature</a>
+                        <a href="aadhar-merger.html">Aadhar Merger</a>
                         <a href="a4-size.html">A4 Size</a>
                     </div>
                 </div>
@@ -218,6 +230,7 @@ function generateHTML(tool) {
                         <a href="merge-pdf.html">Merge PDF</a>
                         <a href="image-to-pdf.html">Image to PDF</a>
                         <a href="compress-pdf.html">Compress PDF</a>
+                        <a href="linkedin-carousel.html">LinkedIn Carousel</a>
                     </div>
                 </div>
                 <div class="top-nav-dropdown">
