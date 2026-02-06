@@ -1,0 +1,13 @@
+{
+    "name": "image-resizer-pro",
+    "version": "1.0.0",
+    "description": "Image & PDF Processing Tools",
+    "main": "script.js",
+    "scripts": {
+        "build": "node re_generate_pages.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {}
+}

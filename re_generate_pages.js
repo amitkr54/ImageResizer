@@ -1,8 +1,46 @@
 const fs = require('fs');
 const path = require('path');
 
-const toolsRoot = path.join(process.cwd(), 'tools');
-if (!fs.existsSync(toolsRoot)) fs.mkdirSync(toolsRoot);
+const distRoot = path.join(process.cwd(), 'dist');
+const toolsRoot = path.join(distRoot, 'tools');
+
+// Create dist and tools directories
+if (!fs.existsSync(distRoot)) fs.mkdirSync(distRoot, { recursive: true });
+if (!fs.existsSync(toolsRoot)) fs.mkdirSync(toolsRoot, { recursive: true });
+
+// Files and folders to copy to dist
+const assetsToCopy = [
+    'index.html',
+    'style.css',
+    'script.js',
+    'robots.txt',
+    'sitemap.xml',
+    'public'
+];
+
+function copyRecursiveSync(src, dest) {
+    const exists = fs.existsSync(src);
+    const stats = exists && fs.statSync(src);
+    const isDirectory = exists && stats.isDirectory();
+    if (isDirectory) {
+        if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+        fs.readdirSync(src).forEach((childItemName) => {
+            copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName));
+        });
+    } else {
+        fs.copyFileSync(src, dest);
+    }
+}
+
+console.log('Copying assets to dist...');
+assetsToCopy.forEach(asset => {
+    const srcPath = path.join(process.cwd(), asset);
+    const destPath = path.join(distRoot, asset);
+    if (fs.existsSync(srcPath)) {
+        copyRecursiveSync(srcPath, destPath);
+        console.log(`Copied: ${asset}`);
+    }
+});
 
 const tools = [
     { id: 'resize-pixel', title: 'Resize Image by Pixel' },
@@ -436,7 +474,10 @@ function generateHTML(tool) {
 </html>`;
 }
 
+console.log('Generating tool pages...');
 tools.forEach(tool => {
     fs.writeFileSync(path.join(toolsRoot, tool.id + '.html'), generateHTML(tool));
     console.log('Generated: ' + tool.id + '.html');
 });
+
+console.log('Build completed successfully.');
