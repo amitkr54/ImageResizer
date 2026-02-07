@@ -402,6 +402,109 @@ document.addEventListener('DOMContentLoaded', () => {
         fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
     }
 
+    // --- Paste Handling ---
+    window.addEventListener('paste', async (e) => {
+        // If the user is typing in a text-based input, don't trigger upload for text pastes
+        const isInput = ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName);
+
+        const clipboardData = e.clipboardData || window.clipboardData;
+        if (!clipboardData) return;
+
+        let files = [];
+
+        // 1. Try to get image/pdf items (blobs/copied from web)
+        if (clipboardData.items) {
+            let foundImage = false;
+            for (let i = 0; i < clipboardData.items.length; i++) {
+                const item = clipboardData.items[i];
+                if (item.type.startsWith('image/') || item.type === 'application/pdf') {
+                    // Only pick the first image flavor found to avoid duplicates for the same data
+                    if (foundImage) continue;
+
+                    const blob = item.getAsFile();
+                    if (blob) {
+                        const ext = item.type.split('/')[1] || (item.type === 'application/pdf' ? 'pdf' : 'png');
+                        files.push(new File([blob], `pasted-${Date.now()}.${ext}`, { type: blob.type }));
+                        foundImage = true;
+                    }
+                }
+            }
+        }
+
+        // 2. Try e.clipboardData.files (files copied from OS explorer)
+        if (files.length === 0 && clipboardData.files && clipboardData.files.length > 0) {
+            files = Array.from(clipboardData.files).filter(f => f.type.startsWith('image/') || f.type === 'application/pdf');
+        }
+
+        // 3. Handle pasted URL (if not already found files and it's not a text input)
+        if (files.length === 0 && !isInput) {
+            const pastedText = clipboardData.getData('text');
+            if (pastedText && (pastedText.startsWith('http://') || pastedText.startsWith('https://'))) {
+                try {
+                    const response = await fetch(pastedText);
+                    const blob = await response.blob();
+                    if (blob.type.startsWith('image/') || blob.type === 'application/pdf') {
+                        const ext = blob.type.split('/')[1] || 'img';
+                        files.push(new File([blob], `url-pasted-${Date.now()}.${ext}`, { type: blob.type }));
+                    }
+                } catch (err) {
+                    console.error("Failed to fetch image from URL (CORS?):", err);
+                }
+            }
+        }
+
+        if (files.length > 0) {
+            handleFiles(files);
+        }
+    });
+
+    // Mouse-based Paste Support (Clipboard API)
+    async function handlePasteClick() {
+        try {
+            const clipboardItems = await navigator.clipboard.read();
+            let files = [];
+            for (const item of clipboardItems) {
+                // Find first valid type and stop for this item
+                const validType = item.types.find(t => t.startsWith('image/') || t === 'application/pdf');
+                if (validType) {
+                    const blob = await item.getType(validType);
+                    const ext = validType.split('/')[1] || 'img';
+                    files.push(new File([blob], `mouse-paste-${Date.now()}.${ext}`, { type: validType }));
+                }
+            }
+            if (files.length > 0) {
+                handleFiles(files);
+            } else {
+                alert("No image or PDF found in clipboard. Please copy an image first.");
+            }
+        } catch (err) {
+            console.error("Clipboard access failed:", err);
+            alert("Clipboard permission denied or not supported in this browser.");
+        }
+    }
+
+    // Dynamically update upload zone UI
+    const uploadDesc = document.querySelector('.upload-content p');
+    if (uploadDesc) {
+        if (!uploadDesc.textContent.includes('Paste')) {
+            uploadDesc.innerHTML = 'Drag, Paste (Ctrl+V) or paste URL here';
+        }
+
+        const uploadContent = document.querySelector('.upload-content');
+        if (uploadContent && !document.getElementById('btn-paste-clipboard')) {
+            const pasteBtn = document.createElement('button');
+            pasteBtn.id = 'btn-paste-clipboard';
+            pasteBtn.className = 'btn-paste-mini';
+            pasteBtn.innerHTML = '<i class="fas fa-paste"></i> Paste from Clipboard';
+            pasteBtn.title = "Paste image or PDF using your mouse";
+            pasteBtn.onclick = (e) => {
+                e.stopPropagation();
+                handlePasteClick();
+            };
+            uploadContent.appendChild(pasteBtn);
+        }
+    }
+
     async function handleFiles(files) {
         const fileList = Array.from(files).slice(0, 10);
         if (fileList.length === 0) return;
@@ -1284,9 +1387,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </button>
             `;
         }
-
-        // Store result for download all
-        processedResults.push(res);
     }
 
     window.downloadRes = (url, name) => {

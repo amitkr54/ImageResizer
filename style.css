@@ -542,6 +542,33 @@ body {
     border: 1px solid rgba(14, 165, 233, 0.2);
 }
 
+.btn-paste-mini {
+    margin-top: 15px;
+    padding: 10px 24px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-paste-mini:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+.btn-paste-mini i {
+    font-size: 1.1rem;
+}
+
 .upload-icon-pulse i {
     font-size: 2.8rem;
     color: var(--primary);
@@ -567,6 +594,7 @@ body {
     margin-bottom: 0.8rem;
     background: linear-gradient(to right, #fff, #94a3b8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -1408,6 +1436,7 @@ select:focus {
 
 input[type="color"] {
     -webkit-appearance: none;
+    appearance: none;
     border: none;
     width: 40px;
     height: 40px;
@@ -1602,7 +1631,7 @@ input[type="color"]::-webkit-color-swatch {
     .info-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .workspace {
         padding: 1.5rem;
     }
